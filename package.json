@@ -1,0 +1,29 @@
+{
+  "name": "hanoi-tower",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r esm ./lib/hanoi.js",
+    "test": "mocha --require esm --reporter mochawesome ./test/*.spec.js ./test/**/*.spec.js",
+    "dev": "parcel ./index.html"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "esm": "^3.0.52"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "mocha": "^5.2.0",
+    "mochawesome": "^3.0.2",
+    "parcel-plugin-vue": "^1.5.0",
+    "pug": "^2.0.3",
+    "vue": "^2.5.16",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "alias": {
+    "lib/": "./lib/",
+    "@/": "./src"
+  }
+}

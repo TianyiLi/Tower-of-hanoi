@@ -1,0 +1,7 @@
+{
+  "svn.ignoreMissingSvnWarning": true,
+  "path-autocomplete.pathMappings": {
+    "@": "${folder}/src",
+    "lib": "${folder}/lib"
+  }
+}
