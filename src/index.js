@@ -1,8 +1,8 @@
 import Vue from 'vue/dist/vue'
 import { Hanoi } from '../lib/hanoi'
 import { Tower } from '../lib/tower'
-const hanoi = new Hanoi()
-const tower = new Tower()
+let hanoi = new Hanoi()
+let tower = new Tower()
 const pxGen = (px) => `${px}px`
 const DISK_WIDTH = 30
 const DISK_HEIGHT = 15
@@ -15,16 +15,15 @@ const App = new Vue({
     isRun: false,
     stickName: [1, 2, 3],
     history: [],
-    tid: -1
+    tid: -1,
+    diskTransTime: 1000,
+    isEnd:false
   },
   computed: {
     containerStyle () {
       let result = {
         width: `${3 * this.maxDisk * 30 + 30}px`,
-        height: `${this.maxDisk * DISK_HEIGHT}px`,
-        minHeight: `150px`,
-        border: `solid 15px red`,
-        borderRadius: '5px'
+        height: `${this.maxDisk * DISK_HEIGHT}px`
       }
       return result
     },
@@ -37,7 +36,8 @@ const App = new Vue({
               height: pxGen(DISK_HEIGHT),
               bottom: pxGen((curr.length - j - 1) * DISK_HEIGHT),
               left: pxGen(i * (this.maxDisk * DISK_WIDTH + 15) + (this.maxDisk - disk) * (DISK_WIDTH / 2)),
-              width: pxGen(disk * DISK_WIDTH)
+              width: pxGen(disk * DISK_WIDTH),
+              transition: `${this.diskTransTime / 1000}s`
             }
           }
         })]
@@ -47,6 +47,16 @@ const App = new Vue({
     }
   },
   methods: {
+    reset() {
+      this.isEnd = false
+      this.isRun = false
+      this.hanoiList = []
+      tower = new Tower()
+      hanoi = new Hanoi()
+      clearInterval(this.tid)
+      this.tid = -1
+      this.diskTransTime = 1000
+    },
     prepare () {
       this.isRun = true
       hanoi.stickName = this.stickName
@@ -60,6 +70,7 @@ const App = new Vue({
       tower.move(result.from, result.to)
       this.hanoiList = Object.entries(tower.getList(false)).map(entry => entry[1])
       if (result.isEnd) {
+        this.isEnd = true
         clearInterval(this.tid)
       }
     },
