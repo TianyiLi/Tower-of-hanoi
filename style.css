@@ -1,0 +1,30 @@
+html, body, #app {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.button-groups {
+  margin: 40px;  
+}
+
+buttons {
+  margin: 15px;
+  padding: 20px 10px;
+}
+
+.container {
+  position: relative;
+  background: red;
+}
+.container .disk {
+  position: absolute;
+  border-radius: 5px 5px 0 0;
+  background: yellow;
+  transition: 1s;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node -r esm ./lib/hanoi.js",
+    "start": "node -r esm ./lib/main.js",
     "test": "mocha --require esm --reporter mochawesome ./test/*.spec.js ./test/**/*.spec.js",
     "dev": "parcel ./index.html"
   },
