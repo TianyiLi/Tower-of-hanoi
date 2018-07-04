@@ -6,4 +6,4 @@
 
 單純練手作品，目前是只有terminal版本
 
-TODO: HTML版本進行中
+Here is the [html versions](https://tianyili.github.io/Tower-of-hanoi/)
